@@ -11,6 +11,7 @@ services:
       - .env
     environment:
       - HISTFILE=/usr/src/app/log/.bash_history 
+      - DATABASE_URL=postgres://postgres:changeme@db/turnxapi
     depends_on:
       db:
         condition: service_healthy
