@@ -145,9 +145,12 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.3-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.3)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -206,6 +209,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
@@ -242,6 +246,7 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-22
 
 DEPENDENCIES
@@ -252,6 +257,7 @@ DEPENDENCIES
   devise-jwt (~> 0.11.0)
   importmap-rails
   jbuilder
+  pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   rack-cors (~> 2.0)
   rails (~> 7.0.6)

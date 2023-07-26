@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_24_004022) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appointments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,9 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_004022) do
     t.string "last_name"
     t.string "picture_url"
     t.string "phone_number"
-    t.datetime "email_verified_at"
-    t.datetime "last_login_at"
-    t.datetime "deleted_at"
+    t.datetime "email_verified_at", precision: nil
+    t.datetime "last_login_at", precision: nil
+    t.datetime "deleted_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
