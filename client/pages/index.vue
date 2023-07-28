@@ -22,16 +22,16 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <button
+      <NuxtLink to="/companies"
         class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
       >
         Quiero prestar servicios
-      </button>
-      <button
+      </NuxtLink>
+      <NuxtLink to="/appointments"
         class="inline-block cursor-pointer rounded-md bg-yellow-500 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-yellow-600"
       >
         Quiero reservar un turno
-      </button>
+      </NuxtLink>
     </div>
   </div>
 
