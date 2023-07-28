@@ -1,21 +1,123 @@
 <template>
-  <header class="bg-slate-700 py-6 flex items-center justify-end">
-    <button class="mx-9 bg-yellow-400 font-semibold px-4 py-2 rounded-md text-lg">Iniciar sesión</button>
-  </header>
+  <div class="absolute right-0">
+    <button
+      @click="showLoginModal"
+      class="my-5 mx-3 inline-block cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-center text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-gray-100"
+    >
+      Iniciar sesión
+    </button>
+  </div>
   <div class="grid grid-cols-5">
     <div
-      class="bg-slate-700 h-screen col-span-2 flex items-center justify-center flex-col"
+      class="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 h-screen col-span-2 flex items-center justify-center flex-col"
     >
-      <h1 class="text-5xl font-semibold my-2 text-white">
+      <h1 class="text-4xl font-semibold my-2 text-white">
         Llena tu agenda de citas,
       </h1>
-      <h2 class="text-5xl font-semibold my-2 text-yellow-300">
+      <h2 class="text-4xl font-semibold my-2 text-yellow-300">
         incluso cuando duermes
       </h2>
     </div>
-    <div class="bg-slate-600 h-screen col-span-3 flex items-center flex-col justify-center gap-5">
-      <button>Quiero prestar servicios</button>
-      <button>Quiero reserver un turno</button>
+    <div
+      class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
+      style="border-left: 2px solid #172554"
+    >
+      <button
+        class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
+      >
+        Quiero prestar servicios
+      </button>
+      <button
+        class="inline-block cursor-pointer rounded-md bg-yellow-500 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-yellow-600"
+      >
+        Quiero reservar un turno
+      </button>
     </div>
   </div>
+
+  <dialog id="loginModal" class="modal">
+    <div method="dialog" class="modal-box">
+      <div class="grid grid-cols-2 text-center my-3">
+        <div>
+          <button
+            type="button"
+            class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2"
+          >
+            <svg
+              class="mr-2 -ml-1 w-4 h-4"
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fab"
+              data-icon="facebook-f"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+            >
+              <path
+                fill="currentColor"
+                d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"
+              ></path>
+            </svg>
+            Acceder con Facebook
+          </button>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+          >
+            <svg
+              class="mr-2 -ml-1 w-4 h-4"
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fab"
+              data-icon="google"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 488 512"
+            >
+              <path
+                fill="currentColor"
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+              ></path>
+            </svg>
+            Acceder con Google
+          </button>
+        </div>
+      </div>
+
+      <form action="" class="w-full">
+        <div class="form-control">
+          <h3
+            class="text-center font-semibold uppercase text-white border-t border-t-gray-600 pt-4"
+          >
+            Acceder con Email
+          </h3>
+          <input
+            type="text"
+            placeholder="john@cita.me"
+            class="input input-bordered w-full w-full"
+          />
+
+          <button
+            class="inline-block my-3 cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-800"
+          >
+            Enviarme un código
+          </button>
+          <button>Ya tengo un código</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
 </template>
+
+<script>
+export default {
+  methods: {
+    showLoginModal() {
+      window.loginModal.showModal();
+    },
+  },
+};
+</script>

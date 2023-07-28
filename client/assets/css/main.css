@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600&display=swap');
+
+@font-face {
+    font-family: "Mona-Sans";
+    src: local("Mona-Sans"),
+     url(~assets/fonts/Mona-Sans/Mona-Sans-Regular.ttf) format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Mona Sans", sans-serif;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
