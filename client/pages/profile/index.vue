@@ -17,6 +17,7 @@
           <form class="my-5">
             <input
               type="text"
+              v-model="account.name"
               placeholder="Nombre(s)"
               class="input input-bordered w-full my-3"
             />
@@ -59,3 +60,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { useProfileStore } from "@/stores/profile";
+const profileStore = useProfileStore();
+
+const account = profileStore.account;
+</script>
