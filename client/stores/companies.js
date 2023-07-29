@@ -20,7 +20,7 @@ export const useCompanyStore = defineStore("company", {
     async getCompany(id) {
       // GET api/v1/companies/{companyId}
     },
-    async getInfoAppointmentOfCompany() {
+    async getInfoAppointmentByCompany() {
       // GET api/v1/companies/{companyId}/info-appointment
     }
   },

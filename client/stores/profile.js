@@ -14,7 +14,10 @@ export const useProfileStore = defineStore("profile", {
 
   actions: {
     updateProfile(profile) {
-      // PUT api/profile
+      // PUT api/v1/profile/me
+    },
+    updateProfileUrl(profileUrl) {
+      // PUT api/v1/profile-url/me
     }
   }
 });
