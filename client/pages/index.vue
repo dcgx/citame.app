@@ -22,12 +22,14 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <NuxtLink to="/companies"
+      <NuxtLink
+        to="/companies"
         class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
       >
         Quiero prestar servicios
       </NuxtLink>
-      <NuxtLink to="/appointments"
+      <NuxtLink
+        to="/appointments"
         class="inline-block cursor-pointer rounded-md bg-yellow-500 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-yellow-600"
       >
         Quiero reservar un turno
@@ -87,7 +89,7 @@
         </div>
       </div>
 
-      <form action="" class="w-full">
+      <div class="w-full">
         <div class="form-control">
           <h3
             class="text-center font-semibold uppercase text-white border-t border-t-gray-600 pt-4"
@@ -96,28 +98,57 @@
           </h3>
           <input
             type="text"
+            v-model="sendCodeEmail"
             placeholder="john@cita.me"
-            class="input input-bordered w-full w-full"
+            class="input input-bordered w-full"
+          />
+
+          <input
+            v-if="authStore.isAlreadySentCode"
+            type="text"
+            placeholder="Ingresa tu codigo"
+            class="input input-bordered w-full"
           />
 
           <button
+            @click="sendCode"
             class="inline-block my-3 cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-800"
           >
-            Enviarme un código
+            <span
+              v-if="authStore.isSendingCode"
+              class="loading loading-spinner loading-sm"
+            ></span>
+
+            <span v-else> Enviarme un código </span>
           </button>
-          <button>Ya tengo un código</button>
+
+          <button v-if="authStore.isAlreadySentCode">Verificar código</button>
+          <button v-else>Ya tengo un código</button>
         </div>
-      </form>
+      </div>
     </div>
   </dialog>
 </template>
 
-<script>
-export default {
-  methods: {
-    showLoginModal() {
-      window.loginModal.showModal();
-    },
-  },
+<script setup>
+import { ref } from "vue";
+import { useNuxtApp } from "#app";
+import { useAuthStore } from "@/stores/auth";
+
+const { $toast } = useNuxtApp();
+
+const authStore = useAuthStore();
+
+const sendCodeEmail = ref("");
+
+const sendCode = () => {
+  console.log($toast, "toast");
+  return authStore.sendCode(sendCodeEmail.value).then(() => {
+    $toast.success("Hemos enviado un código a tu email");
+  });
+};
+
+const showLoginModal = () => {
+  window.loginModal.showModal();
 };
 </script>
