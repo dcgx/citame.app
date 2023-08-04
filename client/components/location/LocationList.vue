@@ -11,9 +11,9 @@
           alt=""
         />
       </div>
-      <span class="font-semibold text-black text-xl mt-2">Bella Vita</span>
+      <span class="font-semibold text-black text-lg mt-2">Bella Vita</span>
       <div
-        class="flex items-center gap-2 font-ligh text-slate-600 text-xl mt-2"
+        class="flex items-center gap-2 font-ligh text-slate-600 text-lg mt-2"
       >
         <span>5.0</span>
         <div class="rating">
@@ -31,11 +31,11 @@
       <div class="mt-2 border-b border-gray-300"></div>
       <div class="py-4">
         <ul>
-          <li class="grid grid-cols-4 gap-4 my-2 text-slate-700 text-lg">
+          <li class="grid grid-cols-4 gap-4 my-2 text-slate-700 text-md">
             <div class="col-span-3 pr-4">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             </div>
-            <div class="col-span-1 text-xl flex items-center">14.990 CLP</div>
+            <div class="col-span-1 text-lg flex items-center">14.990 CLP</div>
             <div class="text-slate-400">45 min</div>
           </li>
         </ul>
