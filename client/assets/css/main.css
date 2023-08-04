@@ -21,3 +21,10 @@ h5 {
 body {
   font-family: "Inter", sans-serif;
 }
+
+
+input:focus-visible, select:focus-visible {
+  border: none !important;
+  border-color: transparent;
+  outline: none;
+}

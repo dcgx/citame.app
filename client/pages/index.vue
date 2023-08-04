@@ -22,16 +22,23 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <NuxtLink to="/companies"
-        class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
-      >
-        Quiero prestar servicios
-      </NuxtLink>
-      <NuxtLink to="/appointments"
-        class="inline-block cursor-pointer rounded-md bg-yellow-500 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-yellow-600"
-      >
-        Quiero reservar un turno
-      </NuxtLink>
+      <div class="w-full px-10 ">
+        <div class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2">
+          <select class="bg-transparent">
+            <option disabled selected>Cabello y peinado</option>
+            <option>Uñas</option>
+            <option>Barbería</option>
+          </select>
+          <div class="flex">
+            <input
+              type="text"
+              placeholder="john@cita.me"
+              class="bg-transparent w-full px-4 text-black focus-visible:border focus-visible:border-white"
+            />
+            <button class="btn bg-black px-4 rounded-full">Buscar</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
