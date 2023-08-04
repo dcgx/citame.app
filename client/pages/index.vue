@@ -22,23 +22,7 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <div class="w-full px-10 ">
-        <div class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2">
-          <select class="bg-transparent">
-            <option disabled selected>Cabello y peinado</option>
-            <option>Uñas</option>
-            <option>Barbería</option>
-          </select>
-          <div class="flex">
-            <input
-              type="text"
-              placeholder="john@cita.me"
-              class="bg-transparent w-full px-4 text-black focus-visible:border focus-visible:border-white"
-            />
-            <button class="btn bg-black px-4 rounded-full">Buscar</button>
-          </div>
-        </div>
-      </div>
+      <SearchInput @search="handleSearch" />
     </div>
   </div>
 
@@ -141,6 +125,7 @@ import { useNuxtApp } from "#app";
 import { useAuthStore } from "@/stores/auth";
 
 const { $toast } = useNuxtApp();
+const router = useRouter();
 
 const authStore = useAuthStore();
 
@@ -155,5 +140,9 @@ const sendCode = () => {
 
 const showLoginModal = () => {
   window.loginModal.showModal();
+};
+
+const handleSearch = () => {
+  router.push({ name: "search", query: { category_id: 1 } });
 };
 </script>

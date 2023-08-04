@@ -1,6 +1,6 @@
 <template>
   <header class="bg-white text-black py-6 px-5 fixed left-0 right-0 top-0">
-    <div class="sticky flex items-center justify-between text-xl">
+    <div class="sticky flex items-center justify-between text-lg">
       <div>Logo</div>
       <div
         class="bg-white px-10 py-5 rounded-full border border-slate-600 text-black grid grid-cols-2"
