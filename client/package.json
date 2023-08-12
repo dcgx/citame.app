@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@ant-design-vue/nuxt": "^1.1.0",
     "@nuxt/devtools": "latest",
     "@tailvue/nuxt": "^1.0.0",
     "@types/node": "^18.17.0",
