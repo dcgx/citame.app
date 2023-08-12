@@ -23,6 +23,9 @@
       style="border-left: 2px solid #172554"
     >
       <SearchInput @search="handleSearch" />
+      <div class="text-2xl my-5">
+        <div class="font-semibold">145.323 <span class="font-light">citas reservadas hoy</span></div>
+      </div>
     </div>
   </div>
 
