@@ -2,52 +2,95 @@
   <div class="w-full px-10">
     <div class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2">
       <a-select
-          show-search
-          placeholder="Seleccionar categoria"
+        show-search
+        placeholder="Seleccionar categoria"
         v-model:value="category"
-        @change="handleChange"
+        @change="handleChangeCategory"
+        @search="handleSearchCategory"
       >
+        <template v-if="categoryStore.isFetching" #notFoundContent>
+          <a-spin size="small" />
+        </template>
+
         <a-select-opt-group>
           <template #label>
-            <span>
-              Categorias destacadas
-            </span>
+            <span> Categorias destacadas </span>
           </template>
-          <a-select-option value="jack">Jack</a-select-option>
-          <a-select-option value="lucy">Lucy</a-select-option>
-        </a-select-opt-group>
-        <a-select-opt-group label="Engineer">
-          <a-select-option value="Yiminghe">yiminghe</a-select-option>
-          <a-select-option value="Yiminghe1">yiminghe1</a-select-option>
+          <a-select-option
+            v-for="category in categoryStore.featuredCategories"
+            :value="category.id"
+            >{{ category.name }}</a-select-option
+          >
         </a-select-opt-group>
       </a-select>
       <div class="flex">
-        <input
-          type="text"
-          placeholder="john@cita.me"
-          class="bg-transparent w-full px-4 text-black focus-visible:border focus-visible:border-white"
-        />
-        <button class="btn bg-black px-4 rounded-full" @click="handleClick">
-          Buscar
+        <a-select
+          class="w-full"
+          show-search
+          placeholder="Ubicación"
+          :not-found-content="addressStore.isFetching ? undefined : null"
+          v-model:value="location"
+          @search="handleSearchLocation"
+        >
+          <template v-if="addressStore.isFetching" #notFoundContent>
+            <a-spin size="small" />
+          </template>
+
+          <a-select-opt-group>
+            <template #label>
+              <span> Últimas ubicaciones </span>
+            </template>
+            <a-select-option
+              v-for="address in addressStore.featuredCategories"
+              :value="address.id"
+              >{{ address.name }}</a-select-option
+            >
+          </a-select-opt-group>
+        </a-select>
+        <button
+          class="btn bg-black px-4 rounded-full"
+          @click="handleSearchClick"
+        >
+          <span
+            v-if="isSubmitting"
+            class="loading loading-spinner loading-sm "
+          ></span>
+          <span v-else>Buscar</span>
         </button>
       </div>
     </div>
   </div>
 </template>
 
-<script  setup>
-const category = ref("")
+<script setup>
+import { useCategoryStore } from "@/stores/categories";
+import { useAddressStore } from "@/stores/addresses";
+
+const categoryStore = useCategoryStore();
+const addressStore = useAddressStore();
+
+const category = ref("");
+const location = ref("");
+
+const isSubmitting = ref(false);
 
 const emit = defineEmits(["search"]);
 
-const handleChange = (value) => {
+const handleChangeCategory = (value) => {
   console.log(`selected ${value}`);
 };
-
-const handleSearch = () => {
+const handleSearchCategory = () => {
+  return categoryStore.search(category.value);
+};
+const handleSearchLocation = () => {
+  return addressStore.search(location.value);
 };
 
-const handleClick = () => {
-  emit("search");
+const handleSearchClick = () => {
+  isSubmitting.value = true;
+  setTimeout(() => {
+    isSubmitting.value = false;
+    emit("search");
+  }, 2000);
 };
 </script>

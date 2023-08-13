@@ -14,3 +14,8 @@
   display: flex;
   align-items: center;
 }
+.ant-select-item.ant-select-item-option.ant-select-item-option-grouped {
+  padding: 0.85rem 0.5rem !important;
+  font-size: 1rem;
+}
+

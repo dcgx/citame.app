@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useLocationStore = defineStore("location", {
+export const useCategoryStore = defineStore("categories", {
   state: () => ({
     featuredCategories: [
       {
@@ -28,11 +28,20 @@ export const useLocationStore = defineStore("location", {
         name: "Depilación",
       },
     ],
+    isFetching: false,
   }),
 
   actions: {
-    async getAllCategories() {
-      // GET api/locations/all?query=...
+    async search(query) {
+      this.isFetching = true;
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          console.log({ query });
+          resolve();
+        }, 1000);
+      });
+
+      this.isFetching = false;
     },
   },
 });
