@@ -4,7 +4,7 @@
       <a-select
         show-search
         placeholder="Seleccionar categoria"
-        v-model:value="category"
+        v-model:value="form.category"
         @change="handleChangeCategory"
         @search="handleSearchCategory"
       >
@@ -29,7 +29,7 @@
           show-search
           placeholder="Ubicación"
           :not-found-content="addressStore.isFetching ? undefined : null"
-          v-model:value="location"
+          v-model:value="form.location"
           @search="handleSearchLocation"
         >
           <template v-if="addressStore.isFetching" #notFoundContent>
@@ -37,23 +37,24 @@
           </template>
 
           <a-select-opt-group>
-            <template #label>
+            <template v-if="hasLastAddresses" #label>
               <span> Últimas ubicaciones </span>
             </template>
             <a-select-option
-              v-for="address in addressStore.featuredCategories"
+              v-for="address in addressStore.addresses"
               :value="address.id"
-              >{{ address.name }}</a-select-option
+              >{{ address.description }}</a-select-option
             >
           </a-select-opt-group>
         </a-select>
         <button
-          class="btn bg-black px-4 rounded-full"
+          class="bg-black rounded-full"
           @click="handleSearchClick"
+          :disabled="$v.$invalid || isSubmitting"
         >
           <span
             v-if="isSubmitting"
-            class="loading loading-spinner loading-sm "
+            class="loading loading-spinner loading-sm"
           ></span>
           <span v-else>Buscar</span>
         </button>
@@ -63,16 +64,25 @@
 </template>
 
 <script setup>
+import { useVuelidate } from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { useCategoryStore } from "@/stores/categories";
 import { useAddressStore } from "@/stores/addresses";
 
 const categoryStore = useCategoryStore();
 const addressStore = useAddressStore();
 
-const category = ref("");
-const location = ref("");
-
 const isSubmitting = ref(false);
+
+const form = reactive({
+  category: "",
+  location: "",
+});
+const rules = {
+  category: { required },
+  location: { required },
+};
+const $v = useVuelidate(rules, form);
 
 const emit = defineEmits(["search"]);
 

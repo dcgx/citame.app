@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,4 +20,15 @@ select:focus-visible {
   border: none !important;
   border-color: transparent;
   outline: none;
+}
+
+button {
+  font-family: "Rubik", sans-serif;
+  padding: 0.7rem 1.2rem;
+  color: white;
+}
+button:disabled {
+  background-color: #e2e8f0;
+  color: #718096;
+  cursor: not-allowed;
 }

@@ -2,10 +2,23 @@ import { defineStore } from "pinia";
 
 export const useAddressStore = defineStore("addresses", {
   state: () => ({
-    addresses: [],
+    addresses: [
+      {
+        id: "ChIJL68lBEHFYpYRMQkPQDzVdYQ",
+        description: "Santiago, Chile",
+        title: "Santiago",
+      }
+    ],
+    lastAddresses: JSON.parse(localStorage.getItem("lastAddresses")) || [],
     selectedAddress: null,
     isFetching: false,
   }),
+
+  getters: {
+    hasLastAddresses() {
+      return this.lastAddresses.length > 0;
+    }
+  },
 
   actions: {
     async search(query) {
