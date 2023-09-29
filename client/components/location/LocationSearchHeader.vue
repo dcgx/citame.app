@@ -4,8 +4,6 @@
       <di class="font-bold text-3xl">citame</di>
       <SearchInput
         @search="handleSearch"
-        :with-border="true"
-        :show-button="false"
         style="width: 650px"
       />
       <div>Logo</div>

@@ -22,7 +22,7 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <SearchInput @search="handleSearch" />
+      <SearchInput @search="handleSearch" :full-width="true" />
       <div class="text-2xl my-5">
         <div class="font-semibold">
           145.323 <span class="font-light">citas reservadas hoy</span>

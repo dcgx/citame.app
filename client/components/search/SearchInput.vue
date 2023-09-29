@@ -1,8 +1,7 @@
 <template>
   <div class="px-10" :class="{ 'w-full': fullWidth }">
     <div
-      class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2"
-      :class="({ border: withBorder }, [borderColor])"
+      class="bg-white px-5 py-2 rounded-full text-black grid grid-cols-2 border border-gray-400"
     >
       <a-select
         show-search
@@ -75,8 +74,6 @@ import { useAddressStore } from "@/stores/addresses";
 
 const props = defineProps([
   "showButton",
-  "withBorder",
-  "borderColor",
   "fullWidth",
   "width",
 ]);
@@ -88,8 +85,6 @@ const isSubmitting = ref(false);
 
 // computed
 const showButton = computed(() => props.showButton ?? true);
-const withBorder = computed(() => props.withBorder ?? true);
-const borderColor = computed(() => props.borderColor ?? "border-gray-300");
 const fullWidth = computed(() => props.fullWidth ?? false);
 const width = computed(() => props.width ?? "w-full");
 
