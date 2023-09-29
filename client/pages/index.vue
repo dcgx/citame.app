@@ -24,7 +24,9 @@
     >
       <SearchInput @search="handleSearch" />
       <div class="text-2xl my-5">
-        <div class="font-semibold">145.323 <span class="font-light">citas reservadas hoy</span></div>
+        <div class="font-semibold">
+          145.323 <span class="font-light">citas reservadas hoy</span>
+        </div>
       </div>
     </div>
   </div>
@@ -146,6 +148,9 @@ const showLoginModal = () => {
 };
 
 const handleSearch = () => {
-  router.push({ name: "search", query: { category_id: 1 } });
+  router.push({
+    name: "search",
+    query: { center: "-92.25,37.75", category_id: 1 },
+  });
 };
 </script>
