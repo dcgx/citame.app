@@ -1,6 +1,9 @@
 <template>
-  <div class="w-full px-10">
-    <div class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2">
+  <div class="px-10" :class="{ 'w-full': fullWidth }">
+    <div
+      class="bg-white px-5 py-3 rounded-full text-black grid grid-cols-2"
+      :class="({ border: withBorder }, [borderColor])"
+    >
       <a-select
         show-search
         placeholder="Seleccionar categoria"
@@ -48,6 +51,7 @@
           </a-select-opt-group>
         </a-select>
         <button
+          v-if="showButton"
           class="bg-black rounded-full"
           @click="handleSearchClick"
           :disabled="$v.$invalid || isSubmitting"
@@ -69,10 +73,25 @@ import { required } from "@vuelidate/validators";
 import { useCategoryStore } from "@/stores/categories";
 import { useAddressStore } from "@/stores/addresses";
 
+const props = defineProps([
+  "showButton",
+  "withBorder",
+  "borderColor",
+  "fullWidth",
+  "width",
+]);
+
 const categoryStore = useCategoryStore();
 const addressStore = useAddressStore();
 
 const isSubmitting = ref(false);
+
+// computed
+const showButton = computed(() => props.showButton ?? true);
+const withBorder = computed(() => props.withBorder ?? true);
+const borderColor = computed(() => props.borderColor ?? "border-gray-300");
+const fullWidth = computed(() => props.fullWidth ?? false);
+const width = computed(() => props.width ?? "w-full");
 
 const form = reactive({
   category: "",
