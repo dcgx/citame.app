@@ -22,18 +22,12 @@
       class="bg-gradient-to-r from-black via-black to-slate-800 h-screen col-span-3 flex items-center flex-col justify-center gap-5"
       style="border-left: 2px solid #172554"
     >
-      <NuxtLink
-        to="/companies"
-        class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
-      >
-        Quiero prestar servicios
-      </NuxtLink>
-      <NuxtLink
-        to="/appointments"
-        class="inline-block cursor-pointer rounded-md bg-yellow-500 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-yellow-600"
-      >
-        Quiero reservar un turno
-      </NuxtLink>
+      <SearchInput @search="handleSearch" :full-width="true" />
+      <div class="text-2xl my-5">
+        <div class="font-semibold">
+          145.323 <span class="font-light">citas reservadas hoy</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -136,6 +130,7 @@ import { useNuxtApp } from "#app";
 import { useAuthStore } from "@/stores/auth";
 
 const { $toast } = useNuxtApp();
+const router = useRouter();
 
 const authStore = useAuthStore();
 
@@ -150,5 +145,12 @@ const sendCode = () => {
 
 const showLoginModal = () => {
   window.loginModal.showModal();
+};
+
+const handleSearch = () => {
+  router.push({
+    name: "search",
+    query: { center: "-92.25,37.75", category_id: 1 },
+  });
 };
 </script>

@@ -1,0 +1,21 @@
+.ant-select-selector {
+  border: none !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-select-item.ant-select-item-group {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.ant-select-selection-search-input {
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+}
+.ant-select-item.ant-select-item-option.ant-select-item-option-grouped {
+  padding: 0.85rem 0.5rem !important;
+  font-size: 1rem;
+}
+
