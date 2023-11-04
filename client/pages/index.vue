@@ -1,6 +1,12 @@
 <template>
   <div class="absolute right-0">
     <button
+      class="my-5 mx-3 inline-block cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-center text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-gray-100"
+    >
+      Quiero prestar servicios
+    </button>
+
+    <button
       @click="showLoginModal"
       class="my-5 mx-3 inline-block cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-center text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-gray-100"
     >
